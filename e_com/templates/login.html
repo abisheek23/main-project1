@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <h2>login</h2>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <form action="" method="post">
+    {%csrf_token%}
+   NAME <input type="text" placeholder="name" name="uname" required><BR><br>
+   PASSWORD <input type="password" placeholder="password" name="password" required>
+   <button type="submit">login</button>
+    </form>
+</body>
+</html>
