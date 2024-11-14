@@ -1,0 +1,24 @@
+body{
+    background-color: bisque;
+}
+form{
+    display: block;
+    margin: auto;
+    text-align: center;
+    justify-items: center;
+
+   
+    height: 100%;
+    width: 300px;
+   
+   
+    background-color: rgb(246, 250, 250);
+    border-radius: 20px
+}
+form button,h2{
+    justify-items: center;
+   
+}
+.container{
+    justify-content: ce
+}
