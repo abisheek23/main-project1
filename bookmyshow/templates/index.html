@@ -64,8 +64,8 @@
     </nav>
     <!-- section1 -->
     <div class="section1">
-      <div><img src="./image/banner/1724998665180_immaculateweb1sep (1).avif" alt="" /></div>
-      <div><img src="./image/banner/1724998665180_immaculateweb1sep.avif" alt="" /></div>
+      <div><img src="{%static 'image/banner/1724998665180_immaculateweb1sep (1).avif' %}" alt="" /></div>
+      <div><img src="{%static 'image/banner/1724998665180_immaculateweb1sep.avif' %}" alt="" /></div>
     </div>
     <!-- section2 -->
     <div class="section2">
@@ -74,45 +74,56 @@
   </div>
   <div class="section2c">
     <div class="sec2divc">
-        <div class="sec2img"><a href="./pages/demo.html" target="_blank"><img src="./image/banner/movie/et00401439-umbvunwrrl-portrait.avif"  alt=""></a></div>
+        <div class="sec2img"><a href="./pages/demo.html" target="_blank"><img src="{%static 'image\movie\et00401439-umbvunwrrl-portrait.avif' %}" alt="" /></a></div>
         <div class="sec2dis"><b>GOAT</b>-action/thriller</div>
     </div>
     <div class="sec2divc">
-        <div class="sec2img"><img src="./image/banner/movie/et00403448-tuuznpupeg-portrait.avif" alt=""></div>
+        <div class="sec2img"><img src="{%static 'image\movie\et00403448-tuuznpupeg-portrait.avif' %}" alt="" /></div>
         <div class="sec2dis"><b>Nunakkuzhi</b>-comady/thriller</div>
     </div>
     <div class="sec2divc">
-        <div class="sec2img"><img src="./image/banner/movie/et00405504-neejccexkl-portrait.avif" alt=""></div>
+        <div class="sec2img"><img src="{%static 'image\movie\et00405504-neejccexkl-portrait.avif' %}" alt=""   /></div>
         
         <div class="sec2dis"><b>vaazha</b>-comedy/drama</div>
     </div>
     <div class="sec2divc">
-        <div class="sec2img"><img src="./image/banner/movie/et00406650-sgqfvxxmkg-portrait.avif" alt=""></div>
+        <div class="sec2img"><img src="{%static 'image\movie\et00406650-sgqfvxxmkg-portrait.avif' %}" alt="" /></div>
         
         <div class="sec2dis"><b>bharathanatyam</b>-drama/family</div>
     </div>
     <div class="sec2divc">
-        <div class="sec2img"><img src="./image/banner/movie/et00409364-ucywxtdzsg-portrait.avif" alt=""></div>
+        <div class="sec2img"><img src="{% static 'image\movie\et00409364-ucywxtdzsg-portrait.avif' %}" alt="" /></div>
         
         <div class="sec2dis"> <b>suryas saturday</b>-action/drama</div>
     </div>
 </div>
 <!-- section3 -->
 <!-- <div class="section3"> -->
-  <div class="sec31"><img src="./image/banner/stream-leadin-web-collection-202210241242.avif" alt="">
+  <div class="sec31"><img src="{% static 'image\banner\stream-leadin-web-collection-202210241242.avif' %}" alt=""/>
     </div>
 
 
-  <div class="sec32"><span><b>the best of live events</b></span> </div>
-  <div class="sec33">
-      <div class="sec33c"><img src="./images/sm.png" alt=""></div>
-      <div class="sec33c"><img src="./images/sm1.png" alt=""></div>
-      <div class="sec33c"><img src="./images/sm3.png" alt=""></div>
-      <div class="sec33c"><img src="./images/sm4.png" alt=""></div>
-      <div class="sec33c"><img src="./images/sm5.png" alt=""></div>
+    <div class="sec32">
+      <span><b>The Best of Live Events</b></span>
   </div>
-<!-- </div> -->
- <!-- section4 -->
+  <div class="sec33">
+      <div class="sec33c">
+          <img src="{% static 'images/sm.png' %}" alt="Live Event 1" />
+      </div>
+      <div class="sec33c">
+          <img src="{% static 'images/sm1.png' %}" alt="Live Event 2" />
+      </div>
+      <div class="sec33c">
+          <img src="{% static 'images/sm3.png' %}" alt="Live Event 3" />
+      </div>
+      <div class="sec33c">
+          <img src="{% static 'images/sm4.png' %}" alt="Live Event 4" />
+      </div>
+      <div class="sec33c">
+          <img src="{% static 'images/sm5.png' %}" alt="Live Event 5" />
+      </div>
+  </div>
+  
  <div class="section4">
   <div class="sec41">
     <div class="sec41head1">
@@ -189,12 +200,12 @@
 </div>
 <div class="section2c">
 <div class="sec2divc">
-    <div class="sec2img"><img src="./images/sec5 (1).png" alt=""></div>
+    <div class="sec2img"><img src="images/sec5 (1).png" alt=""></div>
     <div class="sec2name"><span>9/10 20k Vote</span></div>
     <div class="sec2dis"><b>KILL</b>-action/thrille</div>
 </div>
 <div class="sec2divc">
-    <div class="sec2img"><img src="./images/sec5 (2).png" alt=""></div>
+    <div class="sec2img"><img src="{% static 'images/sec5 (2).png' %}" alt=""  ></div>
     <div class="sec2name">8/10 20k Vote</div>
     <div class="sec2dis"><b>THE RAID</b>-crime/action</div>
 </div>
@@ -209,7 +220,7 @@
     <div class="sec2dis"><b>NO WAY UP</b>-action/thriller</div>
 </div>
 <div class="sec2divc">
-    <div class="sec2img"><img src="./images/sec5 (5).png" alt=""></div>
+    <div class="sec2img"><img src="{%static 'images/sec5 (5).png' %}" alt=""></div>
     <div class="sec2name">9/10 20k Vote</div>
     <div class="sec2dis"> <b>JOHN WICK</b>-crime/action</div>
 </div>
@@ -265,3 +276,5 @@
 </footer>
   </body>
 </html>
+
+C:\Users\hp\Desktop\py\main-project1\bookmyshow\static\image\movie\et00401439-umbvunwrrl-portrait.avif

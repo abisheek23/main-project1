@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
+
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .models import *
-
+import os
 # Create your views here.
 3
 
@@ -77,3 +78,10 @@ def edit_product(req,pid):
         data=prodect.objects.get(pk=pid)
         return  render(req,'shop/edit.html',{'data':data})
 
+def delet_product(req,pid):
+    data=prodect.objects.get(pk=pid)
+    file=data.img.url
+    file=file.split('/')[-1]
+    # os.remove('media/'+file)
+    data.delete()
+    return redirect(shop_home)
