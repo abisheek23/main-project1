@@ -4,20 +4,27 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .models import *
 import os
+from django.contrib.auth.models import  User
 # Create your views here.
 3
 
 def e_com_login(req):
     if 'shop' in req.session:
         return redirect(shop_home)
+    if 'user' in req.session:
+        return redirect (user_home)
     if req.method=='POST':
         uname=req.POST['uname']
         password=req.POST['password']
         data=authenticate(username=uname,password=password)
         if data:
             login(req,data)
-            req.session['shop']=uname   #create session 
-            return redirect(shop_home)
+            if data.is_superuser:
+              req.session['shop']=uname   #create session 
+              return redirect(shop_home)
+            else:
+                req.session['user']=uname
+                return redirect(user_home)
         else:
             messages.warning(req, " invalid user name or password")
             return redirect(e_com_login)
@@ -82,6 +89,41 @@ def delet_product(req,pid):
     data=prodect.objects.get(pk=pid)
     file=data.img.url
     file=file.split('/')[-1]
-    # os.remove('media/'+file)
+    os.remove('media/'+file)
     data.delete()
     return redirect(shop_home)
+
+def register(req):
+    if req.method=='POST':
+        uname=req.POST['uname']
+        email=req.POST['email']
+        pswd=req.POST['pswd']
+        try:
+          data=User.objects.create_user(first_name=uname, username=email,email=email,password=pswd)
+          data.save()
+          return redirect (req,e_com_login)
+        except:
+           messages.warning(req, " already used ")
+           return redirect(register)
+    else:
+        return render(req,'user/registration.html')
+
+def user_home(req):
+    if 'user' in req.session:
+        data=prodect.objects.all()
+        return render(req,'user/user_home.html',{'products':data})
+    else:
+        return redirect(e_com_login)
+    
+def view_pro(req,pid):
+    data=prodect.objects.get(pk=pid)
+    return render(req,'user/viewpro.html',{'product':data})
+
+def add_to_cart(req,pid):
+    product=prodect.objects.get(pk=pid)
+    user=User.objects.get(username=req.session['user'])
+    data=Cart.objects.create(prodect=product,user=user,qty=1)
+    data.save()
+    return redirect(view_cart)
+def view_cart(req):
+    return render (req,'user/cart.html')
