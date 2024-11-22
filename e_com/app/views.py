@@ -122,8 +122,23 @@ def view_pro(req,pid):
 def add_to_cart(req,pid):
     product=prodect.objects.get(pk=pid)
     user=User.objects.get(username=req.session['user'])
-    data=Cart.objects.create(prodect=product,user=user,qty=1)
+    try:
+        data=Cart.objects.get(product=product,user=user)
+        data.qty+=1
+        data.save()
+    except:
+        data=Cart.objects.create(product=product,user=user,qty=1)
+        data.save()
+    return redirect(view_cart)
+
+def view_cart(req):
+    user=User.objects.get(username=req.session['user'])
+    data=Cart.objects.filter(user=user)
+
+    return render (req,'user/cart.html',{'cart':data})
+
+def qty_in(req,cid):
+    data=Cart.objects.get(pk=cid)
+    data.qty+=1
     data.save()
     return redirect(view_cart)
-def view_cart(req):
-    return render (req,'user/cart.html')

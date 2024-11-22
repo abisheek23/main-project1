@@ -18,10 +18,13 @@
               <a class="nav-link mt-3" href="#">home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mt-3" href="add_prodect">Add product</a>
+              <a class="nav-link mt-3" href="add_product">Add product</a>
             </li>
             <li class="nav-item">
               <a class="nav-link mt-3" href="logout">logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mt-3" href="cart">My cart</a>
             </li>
             
           </ul>
@@ -32,7 +35,7 @@
         <div class="row">
           {% for pro in products %}
           <div class="col -lg-4">
-          <a href="viewpro/{{pro.pk}}">
+          <a href="viewpro/{{pro.pk}}" style=" text-decoration: none ;color: #000;">
           <div class="card" style="width:400px">
             <img class="card-img-top" src="{{pro.img.url}}" alt="Card image" style="width:100%">
             <div class="card-body">
@@ -40,8 +43,7 @@
               <h4 class="card-text">{{pro.dis}}</h4>
               <h2 class="card-title ">{{pro.price}}</h2>
               <h4 class="card-text">{{pro.off_price}}</h4>
-              <a href="{{view_cart}}" class="btn btn-border-info">Add to cart</a>
-              <a href="" class="btn btn-border-info">Bye Now</a>
+             
             </div>
           </div>
         </a>

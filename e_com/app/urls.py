@@ -14,7 +14,8 @@ urlpatterns = [
     path('register',views.register),
     path('user_home',views.user_home),
     path('viewpro/<pid>',views.view_pro),
-    path('view_cart/<pid>',views.add_to_cart),
-    path('viewcart/<pid>',views.view_cart),
+    path('my_cart/<pid>',views.add_to_cart),
+    path('cart',views.view_cart),
+    
 
 ]
