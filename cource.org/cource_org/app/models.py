@@ -8,3 +8,8 @@ class cource(models.Model):
     price=models.IntegerField()
     offer_price=models.IntegerField()
     img=models.FileField()
+
+class Message(models.Model):
+    name=models.TextField()
+    email=models.EmailField()
+    message=models.TextField()
