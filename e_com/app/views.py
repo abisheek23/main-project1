@@ -5,6 +5,8 @@ from django.contrib import messages
 from .models import *
 import os
 from django.contrib.auth.models import  User
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 3
 
@@ -98,6 +100,9 @@ def register(req):
         uname=req.POST['uname']
         email=req.POST['email']
         pswd=req.POST['pswd']
+        print(email)
+        send_mail('account created', 'you created a account in e_com', settings.EMAIL_HOST_USER, [email])
+
         try:
           data=User.objects.create_user(first_name=uname, username=email,email=email,password=pswd)
           data.save()
@@ -142,3 +147,36 @@ def qty_in(req,cid):
     data.qty+=1
     data.save()
     return redirect(view_cart)
+
+def cart_buy(req,cid):
+    cart=Cart.objects.get(pk=cid)
+    prodect=cart.product
+    user=cart.user
+    qty=cart.qty
+    price=prodect.offer_price*qty
+    buy=buy.objects.create(prodect=prodect,user=user,qty=qty,price=price)
+    buy.save()
+    return redirect(bookings)
+
+def buybuy(req,pid):
+
+    product=prodect.objects.get(pk=pid)
+    user=User.objects.get(username=req.session['user'])
+    qty=1
+    price=product.offer_price
+    buy=Buy.objects.create(product=product,user=user,qty=qty,price=price)
+    buy.save()
+    return redirect(bookings)
+
+def bookings(req):
+    user=User.objects.get(username=req.session['user'])
+    buy=Buy.objects.filter(user=user)[::-1]
+
+    return render(req,'user/book.html',{'bookings':buy})
+
+
+
+
+def view_bookings(req):
+    buy=Buy.objects.all()[::-1]
+    return redirect (req,'user/home')
